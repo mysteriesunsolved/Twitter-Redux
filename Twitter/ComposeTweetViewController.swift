@@ -23,6 +23,8 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
         
         self.tweetText.delegate = self
         
+        
+        
         tweetText.layer.borderWidth = 1
         tweetText.layer.cornerRadius = 8
         tweetText.layer.borderColor = UIColor .lightGrayColor().CGColor

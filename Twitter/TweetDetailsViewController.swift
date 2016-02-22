@@ -95,9 +95,16 @@ class TweetDetailsViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let profile = segue.destinationViewController as! ProfileViewController
-        profile.tweet = tweet
         
+        if segue.identifier == "toProfile" {
+        let profile = segue.destinationViewController as! ProfileViewController
+            profile.tweet = tweet
+        } else if segue.identifier == "reply" {
+            let composetweet = segue.destinationViewController as! ComposeTweetViewController
+            let usernamebel = tweet.user!.screenname?.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+            
+            composetweet.tweetText.text = composetweet.tweetText.text.stringByAppendingString(usernamebel!)
+        }
     }
     
     @IBAction func onFavourite(sender: AnyObject) {

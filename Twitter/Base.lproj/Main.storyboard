@@ -327,11 +327,14 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Thh-Ds-R7g">
                                 <rect key="frame" x="20" y="252" width="21" height="24"/>
                                 <state key="normal" image="reply-action_0"/>
+                                <connections>
+                                    <segue destination="wNV-uc-Tl9" kind="modal" id="3rO-kb-eg0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cd-2l-ST3">
                                 <rect key="frame" x="20" y="90" width="72" height="64"/>
                                 <connections>
-                                    <segue destination="etI-cP-9V2" kind="push" id="Vi9-pp-o3v"/>
+                                    <segue destination="etI-cP-9V2" kind="push" identifier="toProfile" id="Vi9-pp-o3v"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMS-eB-567">
@@ -479,7 +482,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3l-DK-Vl0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1842" y="275"/>
+            <point key="canvasLocation" x="1966" y="281"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Imm-Dh-eB8">
@@ -547,4 +550,7 @@
         <image name="reply-action_0" width="21" height="24"/>
         <image name="retweet-action" width="25" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3rO-kb-eg0"/>
+    </inferredMetricsTieBreakers>
 </document>
