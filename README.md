@@ -97,7 +97,7 @@ The following **additional** features are implemented:
 - [x] Added blur and vibrancy to the profile header image view
 - [x] User can pull to refresh after composing the tweet to see their tweet in their time timeline
 - [x] Added favourite and retweet animations to the buttons in the tweet detail view
-- [x]Counter not only counts down the characters but turns red and becomes negative when characters exceed 140 in number
+- [x] Counter not only counts down the characters but turns red and becomes negative when characters exceed 140 in number
 
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
