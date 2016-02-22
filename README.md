@@ -64,7 +64,7 @@ I had trouble with the autolayout and I think I ran out of network api requests 
     
     # Project 5 - *Name of App Here*
 
-Time spent: **X** hours spent in total
+Time spent: **16** hours spent in total
 
 ## User Stories
 
