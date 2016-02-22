@@ -31,7 +31,10 @@ class ProfileViewController: UIViewController {
         let profileimageURL = (tweet.user?.profileImageUrl)! as String
         profileimageView.setImageWithURL(NSURL(string: profileimageURL)!)
         
-        profileBackgroundView.setImageWithURL(NSURL(string: profileimageURL)!)
+        let background = tweet.user?.profileBackgroundUrl
+        
+        if background != nil{
+        profileBackgroundView.setImageWithURL(NSURL(string: background!)!)
        
         let darkblur = UIBlurEffect(style: UIBlurEffectStyle.Light)
         let blurView = UIVisualEffectView(effect: darkblur)
@@ -41,12 +44,15 @@ class ProfileViewController: UIViewController {
         vibrancyView.frame = profileBackgroundView.bounds
         blurView.addSubview(vibrancyView)
         profileBackgroundView.addSubview(blurView)
+        } else {
+            profileBackgroundView.backgroundColor = UIColor .purpleColor()
+        }
         
         let name = (tweet.user?.name)! as String
         nameLabel.text = name
         
         let username = (tweet.user?.screenname)! as String
-        usernameLabel.text = username
+        usernameLabel.text = "@\(username)"
         
         let tweetCount = (tweet.user?.tweetCount)!
         tweetCountLabel.text = String(tweetCount)

@@ -62,7 +62,6 @@ class TwitterClient: BDBOAuth1SessionManager {
         fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential!) -> Void in
             print("Got the access token!")
             TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
-            
             TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
                 //print("user: \(response)")
                 var user = User(dictionary: response as! NSDictionary)
@@ -72,9 +71,8 @@ class TwitterClient: BDBOAuth1SessionManager {
                 }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
                     print("error getting current user")
                     self.loginCompletion?(user: nil, error: error)
-
+                    
             })
-            
             
         }) { (error: NSError!) -> Void in
             print("Failed to receieve the acess token")
@@ -104,5 +102,32 @@ class TwitterClient: BDBOAuth1SessionManager {
                 completion(error: error)
             }
         )}
+    
+    func getCurrentUser(completion: (user: User, error: NSError?) -> ()) {
+        TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            //print("user: \(response)")
+            var user = User(dictionary: response as! NSDictionary)
+            User.currentUser = user
+            print("user: \(user.name)")
+            self.loginCompletion?(user: user, error: nil)
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                print("error getting current user")
+                self.loginCompletion?(user: nil, error: error)
+                
+        })
+
+    }
+    
+    func tweeting(tweet: String){
+        
+        POST("https://api.twitter.com/1.1/statuses/update.json?status=\(tweet)", parameters: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+          print("tweeeeting")
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("Sigh please work")
+               
+            }
+        )}
+
+
 
 }

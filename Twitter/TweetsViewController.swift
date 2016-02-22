@@ -35,6 +35,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     @IBAction func onLogout(sender: AnyObject) {
         User.currentUser?.logout()
         print("logged out")
@@ -59,12 +63,18 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "toTweet"{
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPathForCell(cell)
         let tweet = tweets![indexPath!.row]
         
         let tweetdetails = segue.destinationViewController as! TweetDetailsViewController
         tweetdetails.tweet = tweet
+            
+        }
+        else if segue.identifier == "compose"{
+        }
     }
     /*
     // MARK: - Navigation
